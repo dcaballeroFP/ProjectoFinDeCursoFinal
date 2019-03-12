@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ProjectoFinDeCurso</string>
+    <string name="loggin">Loggin</string>
+    <string name="new_account">New Account</string>
 </resources>
