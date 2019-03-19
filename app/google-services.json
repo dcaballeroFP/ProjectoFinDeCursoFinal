@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "43948851882",
+    "firebase_url": "https://searchcarproyecto.firebaseio.com",
+    "project_id": "searchcarproyecto",
+    "storage_bucket": "searchcarproyecto.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43948851882:android:cc25dac050e917b7",
+        "android_client_info": {
+          "package_name": "com.example.projectofindecurso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43948851882-udfkfhk6cfmglmgsgq113d8jhid3nakk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.projectofindecurso",
+            "certificate_hash": "027c130e9a8b60b12b7c761b352e956cb04087c5"
+          }
+        },
+        {
+          "client_id": "43948851882-34l78ji0c3iisnfl28rr0rcau0t78bik.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZioTDRmjvyVIQoASZ09zYfQ_nhrHmtnM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43948851882-34l78ji0c3iisnfl28rr0rcau0t78bik.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
