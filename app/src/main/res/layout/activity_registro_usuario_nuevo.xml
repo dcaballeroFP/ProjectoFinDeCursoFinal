@@ -69,7 +69,7 @@
                 android:id="@+id/EmailRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Contraseña"
+                android:hint="Correo Electronico"
                 android:imeActionId="6"
 
                 android:imeOptions="actionUnspecified"
