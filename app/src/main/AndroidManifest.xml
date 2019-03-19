@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UsuarioNuevo"></activity>
+        <activity android:name=".UsuarioNuevo" />
+        <activity android:name=".RegistroUsuarioNuevo"></activity>
     </application>
 
 </manifest>
