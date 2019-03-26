@@ -27,14 +27,11 @@
         android:orientation="vertical">
 
 
-        <Button
-            style="@style/ColorBotonGoogle"
-            android:id="@+id/RegistrarConGoogle"
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text=" Google "
-            android:textStyle="bold"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"/>
 
         <Button
             android:id="@+id/RegistrarConFacebook"
