@@ -29,7 +29,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/white"
-                android:hint="Nombre"
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColorHint="@android:color/white"
@@ -48,7 +47,6 @@
                 android:id="@+id/ApellidoRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Apellidos"
                 android:imeOptions="actionUnspecified"
                 android:maxLines="1"
                 android:inputType="textPersonName"
@@ -69,7 +67,6 @@
                 android:id="@+id/EmailRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Correo Electronico"
                 android:imeActionId="6"
 
                 android:imeOptions="actionUnspecified"
@@ -92,7 +89,6 @@
                 android:id="@+id/ContraseñaRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Contraseña"
                 android:imeActionId="6"
 
                 android:imeOptions="actionUnspecified"
