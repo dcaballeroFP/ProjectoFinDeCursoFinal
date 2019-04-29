@@ -38,20 +38,29 @@
             android:id="@+id/RegistrarConFacebook"
             style="@style/ColorBotonFacebook"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="Facebook"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="30dp"
         android:orientation="vertical">
+
+        <TextView
+            style="@style/titulos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:text="O utiliza tu correo electrónico: "
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/botton_correoElectronico"
@@ -59,18 +68,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="90dp"
-            android:text="correo electrónico"
-            android:textStyle="bold"
             android:background="@drawable/botton_redondo"
-            />
-        <TextView
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="O utiliza tu correo electrónico: "
-            style="@style/titulos"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
+            android:text="correo electrónico"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

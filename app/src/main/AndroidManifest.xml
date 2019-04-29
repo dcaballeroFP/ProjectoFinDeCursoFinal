@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+        <activity android:name=".PantallaPrincipal"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +19,7 @@
         </activity>
         <activity android:name=".UsuarioNuevo" />
         <activity android:name=".RegistroUsuarioNuevo" />
-        <activity android:name=".RegistroVehiculo"></activity>
+        <activity android:name=".RegistroVehiculo" />
     </application>
 
 </manifest>

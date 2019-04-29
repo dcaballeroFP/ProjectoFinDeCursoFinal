@@ -137,7 +137,7 @@
             android:text="Registrar"
             android:background="@drawable/button_redondo_border"
             android:textStyle="bold"
-            android:onClick="loguearCheckbox"/>
+            android:onClick="registerComprobations"/>
 
     </LinearLayout>
 </LinearLayout>

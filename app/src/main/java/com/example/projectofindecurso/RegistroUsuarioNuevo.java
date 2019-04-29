@@ -1,24 +1,23 @@
 package com.example.projectofindecurso;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 
 public class RegistroUsuarioNuevo extends AppCompatActivity {
 
     private EditText nombreview;
     private EditText apellidoview;
     private EditText emailview;
+    private EditText passwordview;
     int contador;
 
     private CheckBox seleccionDireccion;
@@ -32,6 +31,8 @@ public class RegistroUsuarioNuevo extends AppCompatActivity {
         nombreview=findViewById(R.id.NombreRegistro);
         apellidoview=findViewById(R.id.ApellidoRegistro);
         emailview=findViewById(R.id.EmailRegistro);
+        passwordview=findViewById(R.id.ContraseñaRegistro);
+
 
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -44,27 +45,41 @@ public class RegistroUsuarioNuevo extends AppCompatActivity {
 
             for (int i = 0; i <nombreview.length() ; i++) {
                 char c = nombreview.getText().toString().charAt(i);
-                if(c== ' '){
+                if(c==' '){
                     nombreview.setText(nombreview.getText().toString().substring(0,contador));
-                    apellidoview.setText(nombreview.getText().toString().substring(contador));
-
-                    break;
-                }else {
-                    contador++;
+                    apellidoview.setText(apellidoview.getText().toString().substring(nombreview.getText().length()+1));
+                }
+                else {
+                        contador++;
+                    }
                 }
 
             }
 
         }
 
-
-    }
-    public void loguearCheckbox(View v) {
+    public void registerComprobations(View v) {
         if (!seleccionDireccion.isChecked()) {
-            String s = "ERROR: " + "campo obligatorio";
+            String s = "ERROR: " + "Terminos y condiciones: campo obligatorio";
             Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+        }else if(nombreview.getText().toString().equals("")){
+            String s = "ERROR: " + "Nombre: campo obligatorio";
+            Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+        }else if(emailview.getText().toString().equals("")){
+            String s = "ERROR: " + "Email: campo obligatorio";
+            Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+        }else if(passwordview.getText().toString().equals("")){
+            String s = "ERROR: " + "Contraseña: campo obligatorio";
+            Toast.makeText(this, s, Toast.LENGTH_LONG).show();
+        }else {
+            findViewById(R.id.botonRegistrar).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(RegistroUsuarioNuevo.this, PantallaPrincipal.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
         }
     }
-
-
-}
