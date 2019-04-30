@@ -1,4 +1,4 @@
-package com.example.projectofindecurso;
+package com.example.projectofindecurso.Registry;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.projectofindecurso.R;
+import com.example.projectofindecurso.PantallaPrincipal;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

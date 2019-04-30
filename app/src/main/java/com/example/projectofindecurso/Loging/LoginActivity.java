@@ -1,9 +1,11 @@
-package com.example.projectofindecurso;
+package com.example.projectofindecurso.Loging;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class LogginActivity extends AppCompatActivity {
+import com.example.projectofindecurso.R;
+
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

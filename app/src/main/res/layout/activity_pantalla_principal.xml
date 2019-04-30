@@ -19,66 +19,69 @@
 
 
         <LinearLayout
-            android:id="@+id/gpsPosition"
+            android:id="@+id/gpsPosicion"
             android:layout_width="196dp"
             android:layout_height="218dp"
             android:layout_marginTop="76dp"
             android:layout_marginBottom="8dp"
             android:background="#FFFFFF"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/gpsParkings"
-            app:layout_constraintEnd_toStartOf="@+id/gpsRestaurantes"
+            app:layout_constraintBottom_toTopOf="@+id/gpsParking"
+            app:layout_constraintEnd_toStartOf="@+id/gpsRestaurante"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/constraintLayout"
             app:layout_constraintVertical_bias="0.057">
 
             <ImageView
-                android:layout_width="186dp"
-                android:layout_height="206dp"
+                android:id="@+id/gpsPosicionImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:src="@drawable/location_emoticono" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/gpsRestaurantes"
-            android:layout_width="211dp"
+            android:id="@+id/gpsRestaurante"
+            android:layout_width="208dp"
             android:layout_height="220dp"
             android:layout_marginTop="76dp"
             android:layout_marginBottom="8dp"
             android:background="#FFFFFF"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/gpsAeropuertosCercanos"
+            app:layout_constraintBottom_toTopOf="@+id/gpsAeropuerto"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/constraintLayout"
             app:layout_constraintVertical_bias="0.057">
 
             <ImageView
+                android:id="@+id/gpsRestauranteImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/restaurant_emoticono" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/gpsParkings"
+            android:id="@+id/gpsParking"
             android:layout_width="197dp"
             android:layout_height="216dp"
             android:layout_marginBottom="144dp"
             android:background="#FFFFFF"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/gpsAeropuertosCercanos"
+            app:layout_constraintEnd_toStartOf="@+id/gpsAeropuerto"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:id="@+id/gpsParkingImage"
+                android:layout_width="208dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/car_emoticono" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/gpsAeropuertosCercanos"
+            android:id="@+id/gpsAeropuerto"
             android:layout_width="208dp"
             android:layout_height="216dp"
             android:layout_marginBottom="144dp"
@@ -86,8 +89,9 @@
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
-
             <ImageView
+                android:id="@+id/gpsAeropuertoImage"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/airplane_emoticono" />

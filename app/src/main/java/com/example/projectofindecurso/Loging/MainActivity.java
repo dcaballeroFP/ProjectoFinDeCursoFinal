@@ -1,9 +1,12 @@
-package com.example.projectofindecurso;
+package com.example.projectofindecurso.Loging;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.projectofindecurso.R;
+import com.example.projectofindecurso.Registry.UsuarioNuevo;
 
 public class MainActivity extends AppCompatActivity {
 

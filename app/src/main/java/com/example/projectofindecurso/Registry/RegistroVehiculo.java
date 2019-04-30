@@ -1,7 +1,9 @@
-package com.example.projectofindecurso;
+package com.example.projectofindecurso.Registry;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.projectofindecurso.R;
 
 public class RegistroVehiculo extends AppCompatActivity {
 

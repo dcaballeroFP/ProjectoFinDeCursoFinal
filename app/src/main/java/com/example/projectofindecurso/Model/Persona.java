@@ -1,4 +1,4 @@
-package com.example.projectofindecurso.model;
+package com.example.projectofindecurso.Model;
 
 public class Persona {
 
