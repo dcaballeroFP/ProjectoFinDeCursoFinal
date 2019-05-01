@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.example.projectofindecurso.GpsActivities.GpsAirport;
 import com.example.projectofindecurso.GpsActivities.GpsParking;
+import com.example.projectofindecurso.GpsActivities.GpsPositionActivity;
 import com.example.projectofindecurso.GpsActivities.GpsRestaurant;
 
 import android.Manifest;
@@ -15,7 +16,7 @@ import android.location.Location;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
-import com.example.projectofindecurso.GpsActivities.MapsActivity;
+import com.example.projectofindecurso.GpsActivities.PointsMapsActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -68,7 +69,7 @@ public class PantallaPrincipal extends AppCompatActivity {
             findViewById(R.id.gpsPosicionImage).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(PantallaPrincipal.this, MapsActivity.class);
+                    Intent intent = new Intent(PantallaPrincipal.this, GpsPositionActivity.class);
                     startActivity(intent);
                 }
             });
