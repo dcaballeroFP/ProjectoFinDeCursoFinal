@@ -6,72 +6,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/fondousuarionuevo">
-    <TextView
-        android:id="@+id/textoRegistroRapido"
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        style="@style/titulos"
-        android:text="Regístrate rapidamente con :"
-        android:textStyle="bold"
-        android:textSize="16sp"/>
 
-    <LinearLayout
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            />
 
         <Button
-            android:id="@+id/RegistrarConFacebook"
-            style="@style/ColorBotonFacebook"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Facebook"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="30dp"
-        android:orientation="vertical">
-
-        <TextView
-            style="@style/titulos"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:text="O utiliza tu correo electrónico: "
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/botton_correoElectronico"
-            style="@style/ColorBoton2"
-            android:layout_width="match_parent"
+            android:id="@+id/loginAcount"
+            android:layout_width="253dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="90dp"
-            android:background="@drawable/botton_redondo"
-            android:text="correo electrónico"
-            android:textStyle="bold" />
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="492dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bordes"
+            android:drawableLeft="@drawable/ic_candado"
+            android:paddingLeft="15dp"
+            android:text="@string/loggin"
+            android:textColor="#ffffff"
+            android:textSize="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
 
 </LinearLayout>

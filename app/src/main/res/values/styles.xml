@@ -15,7 +15,7 @@
     <style name="ColorBoton1">
         <item name="android:textColor">#FFFFFF</item>
         <!-- <item name="textStyle">bold</item> -->
-        <item name="android:background">#494545</item>
+        <item name="android:background">#FDFD74</item>
     </style>
 
     <style name="ColorBoton2">

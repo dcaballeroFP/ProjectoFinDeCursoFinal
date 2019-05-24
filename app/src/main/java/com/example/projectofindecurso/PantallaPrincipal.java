@@ -5,10 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.projectofindecurso.GpsActivities.GpsAirport;
-import com.example.projectofindecurso.GpsActivities.GpsParking;
+import com.example.projectofindecurso.GpsActivities.PointsMapsAirportActivity;
 import com.example.projectofindecurso.GpsActivities.GpsPositionActivity;
-import com.example.projectofindecurso.GpsActivities.GpsRestaurant;
+import com.example.projectofindecurso.GpsActivities.PointsMapsRestaurantActivity;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -16,7 +15,7 @@ import android.location.Location;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
-import com.example.projectofindecurso.GpsActivities.PointsMapsActivity;
+import com.example.projectofindecurso.GpsActivities.PointsMapsParkingActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -54,16 +53,17 @@ public class PantallaPrincipal extends AppCompatActivity {
                         @Override
                         public void onSuccess(Location location) {
                             if (location != null) {
-                                Log.e("Latitud: ", location.getLatitude() + "Longitud: " + location.getLongitude());
+                                Log.e("Latitude: ", location.getLatitude() + "Longitude: " + location.getLongitude());
 
                                 Map<String, Object> latlang = new HashMap<>();
-                                latlang.put("latitud", location.getLatitude());
-                                latlang.put("longitud", location.getLongitude());
-
-                                mDatabase.child("usuarios").push().setValue(latlang);
+                                latlang.put("latitude", location.getLatitude());
+                                latlang.put("longitude", location.getLongitude());
                             }
                         }
                     });
+
+
+
 
 
             findViewById(R.id.gpsPosicionImage).setOnClickListener(new View.OnClickListener() {
@@ -77,7 +77,7 @@ public class PantallaPrincipal extends AppCompatActivity {
             findViewById(R.id.gpsRestauranteImage).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(PantallaPrincipal.this, GpsRestaurant.class);
+                    Intent intent = new Intent(PantallaPrincipal.this, PointsMapsRestaurantActivity.class);
                     startActivity(intent);
                 }
             });
@@ -85,7 +85,7 @@ public class PantallaPrincipal extends AppCompatActivity {
             findViewById(R.id.gpsParkingImage).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(PantallaPrincipal.this, GpsParking.class);
+                    Intent intent = new Intent(PantallaPrincipal.this, PointsMapsParkingActivity.class);
                     startActivity(intent);
                 }
             });
@@ -93,7 +93,7 @@ public class PantallaPrincipal extends AppCompatActivity {
             findViewById(R.id.gpsAeropuertoImage).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(PantallaPrincipal.this, GpsAirport.class);
+                    Intent intent = new Intent(PantallaPrincipal.this, PointsMapsAirportActivity.class);
                     startActivity(intent);
                 }
             });

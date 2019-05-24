@@ -27,7 +27,7 @@ public class GpsPositionActivity extends FragmentActivity implements OnMapReadyC
     private GoogleMap mMap;
     private Marker marcador;
     double latitud = 0.0;
-    double longitud = 00;
+    double longitud = 0.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class GpsPositionActivity extends FragmentActivity implements OnMapReadyC
                         .title("Mi Posición Actual")
                 //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher))
         );
-        mMap.animateCamera(miUbicacion);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordenadas,10));
     }
 
     private void actualizarUbicacion(Location location) {

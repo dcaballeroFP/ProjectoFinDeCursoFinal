@@ -35,19 +35,19 @@
             android:name=".GpsActivities.GpsPositionActivity"
             android:label="@string/title_activity_gps_position"></activity>
         <activity
-            android:name=".GpsActivities.PointsMapsActivity"
+            android:name=".GpsActivities.PointsMapsParkingActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".GpsActivities.GpsRestaurant" />
-        <activity android:name=".GpsActivities.GpsParking" />
-        <activity android:name=".GpsActivities.GpsAirport" />
+        <activity android:name=".GpsActivities.PointsMapsRestaurantActivity" />
+        <activity android:name=".GpsActivities.PointsMapsAirportActivity" />
         <activity android:name=".PantallaPrincipal" />
-        <activity android:name=".Loging.MainActivity">
+        <activity android:name=".Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".Registry.UsuarioNuevo" />
         <activity android:name=".Registry.RegistroUsuarioNuevo" />
         <activity android:name=".Registry.RegistroVehiculo" />

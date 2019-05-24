@@ -1,27 +1,27 @@
 package com.example.projectofindecurso;
 
 public class PointsMapsDates {
-    private double latitud;
-    private double longitud;
+    private double latitude;
+    private double longitude;
 
     public PointsMapsDates() {
     }
 
 
-    public double getLatitud() {
-        return latitud;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setLatitud(double latitud) {
-        this.latitud = latitud;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 
-    public double getLongitud() {
-        return longitud;
+    public double getLongitude() {
+        return longitude;
     }
 
-    public void setLongitud(double longitud) {
-        this.longitud = longitud;
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
 
