@@ -53,11 +53,11 @@
 
             <ImageButton
                 android:id="@+id/gpsPosicionImage"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                style="@style/ColorBoton1"
+                android:layout_width="71dp"
+                android:layout_height="184dp"
                 android:layout_weight="1"
-                android:src="@drawable/location_emoticono"
-                style="@style/ColorBoton1"/>
+                android:src="@drawable/location_emoticono" />
 
             <ImageButton
                 android:id="@+id/gpsRestauranteImage"

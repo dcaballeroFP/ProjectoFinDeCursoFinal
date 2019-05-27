@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.projectofindecurso.Ayuda.ActivityAyuda;
 import com.example.projectofindecurso.MainActivity;
+import com.example.projectofindecurso.PantallaPrincipal;
 import com.example.projectofindecurso.R;
 import com.example.projectofindecurso.Registry.RegistroUsuarioNuevo;
 import com.firebase.ui.auth.AuthUI;
@@ -34,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     void comeIn(){
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, PantallaPrincipal.class));
             finish();
         }
     }
@@ -62,6 +64,11 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         }
+    }
+
+    public void ejecutar_ayuda(View v){
+        Intent i = new Intent(this, ActivityAyuda.class);
+        startActivity(i);
     }
 
 }

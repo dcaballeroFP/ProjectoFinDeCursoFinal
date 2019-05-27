@@ -39,7 +39,6 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".GpsActivities.PointsMapsRestaurantActivity" />
         <activity android:name=".GpsActivities.PointsMapsAirportActivity" />
-        <activity android:name=".PantallaPrincipal" />
         <activity android:name=".Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,9 +47,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".Registry.UsuarioNuevo" />
+        <activity android:name=".PantallaPrincipal" />
         <activity android:name=".Registry.RegistroUsuarioNuevo" />
         <activity android:name=".Registry.RegistroVehiculo" />
+        <activity android:name=".Ayuda.ActivityAyuda" />
+        <activity android:name=".Ayuda.ActivityAyudaAeropuerto" />
+        <activity android:name=".Ayuda.ActivityAyudaAparcamiento" />
+        <activity android:name=".Ayuda.ActivityAyudaLocalizacion" />
+        <activity android:name=".Ayuda.ActivityAyudaRegistro" />
+        <activity android:name=".Ayuda.ActivityAyudaRestaurante" />
+
     </application>
 
 </manifest>
