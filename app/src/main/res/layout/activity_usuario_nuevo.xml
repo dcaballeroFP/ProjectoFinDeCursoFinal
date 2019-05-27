@@ -30,8 +30,8 @@
 
         <ImageButton
             android:id="@+id/buttonAyuda"
-            android:layout_width="62dp"
-            android:layout_height="52dp"
+            android:layout_width="39dp"
+            android:layout_height="40dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -40,10 +40,10 @@
             android:onClick="ejecutar_ayuda"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.891"
+            app:layout_constraintHorizontal_bias="0.906"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginAcount"
-            app:layout_constraintVertical_bias="0.69"
+            app:layout_constraintVertical_bias="0.922"
             app:srcCompat="@android:drawable/ic_menu_help" />
 
 
