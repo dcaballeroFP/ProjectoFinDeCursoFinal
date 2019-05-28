@@ -66,26 +66,7 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
         mapFragment.getMapAsync(this);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
-
-
-
     }
-
-
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-
-
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -99,13 +80,15 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
 //                mMap.addMarker(new MarkerOptions()
 //                        .anchor(0.0f,1.1f)
 //                        .position(latLng));
-                mDatabase.child("MarcadorParking").push().setValue(latLng);
-              //  mDatabase.child("MarcadorParking").push().setValue(nombre);
+
+                PointsMapsDates pointsMapsDates = new PointsMapsDates();
+                pointsMapsDates.setLongitude(latLng.longitude);
+                pointsMapsDates.setLatitude(latLng.latitude);
+                pointsMapsDates.setCalle("pepe");
+                mDatabase.child("MarcadorParking").push().setValue(pointsMapsDates);
 
             }
         });
-
-
 
 
         //Clicar en una marca
@@ -191,9 +174,12 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
                     PointsMapsDates pmd=snapshot.getValue(PointsMapsDates.class);
                     Double latitud= pmd.getLatitude();
                     Double longitud= pmd.getLongitude();
+                    String calle= pmd.getCalle();
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(new LatLng(latitud,longitud));
+                    markerOptions.title(calle);
                     markerOptions.icon(bitmapDescriptorFromVector(getApplicationContext(),R.drawable.car_emoticono));
+
                     tmpRealTimeMarker.add(mMap.addMarker(markerOptions));
                 }
                 realTimeMarkers.clear();

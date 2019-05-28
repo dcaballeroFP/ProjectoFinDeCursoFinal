@@ -35,6 +35,7 @@ public class PantallaPrincipal extends AppCompatActivity {
     private int MY_PERMISSIONS_REQUEST_READ_CONTACTS;
     private FusedLocationProviderClient mFusedLocationClient;
     DatabaseReference mDatabase;
+    String pepe = "Hola";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class PantallaPrincipal extends AppCompatActivity {
                                 Map<String, Object> latlang = new HashMap<>();
                                 latlang.put("latitude", location.getLatitude());
                                 latlang.put("longitude", location.getLongitude());
+                                latlang.put("calle", pepe );
                             }
                         }
                     });

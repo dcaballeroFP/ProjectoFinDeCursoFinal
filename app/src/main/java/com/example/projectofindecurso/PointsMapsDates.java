@@ -4,9 +4,12 @@ public class PointsMapsDates {
     private double latitude;
     private double longitude;
 
+
+
+    public String calle;
+
     public PointsMapsDates() {
     }
-
 
     public double getLatitude() {
         return latitude;
@@ -24,5 +27,11 @@ public class PointsMapsDates {
         this.longitude = longitude;
     }
 
+    public String  getCalle() {
+        return calle;
+    }
+    public void setCalle(String calle) {
+        this.calle = calle;
+    }
 
 }
