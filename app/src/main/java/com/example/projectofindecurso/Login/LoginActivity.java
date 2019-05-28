@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.projectofindecurso.Ayuda.ActivityAyuda;
+import com.example.projectofindecurso.GpsActivities.GpsPositionActivity;
 import com.example.projectofindecurso.MainActivity;
 import com.example.projectofindecurso.PantallaPrincipal;
 import com.example.projectofindecurso.R;
@@ -23,6 +24,12 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_nuevo);
+        findViewById(R.id.helpbutton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, ActivityAyuda.class);
+                startActivity(intent);            }
+        });
         findViewById(R.id.loginAcount).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //comeIn();
+       // comeIn();
     }
 
     void comeIn(){
@@ -47,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                 AuthUI.getInstance()
 
                         .createSignInIntentBuilder()
+                        .setIsSmartLockEnabled(false)
                         .setAvailableProviders(Arrays.asList(
                                 new AuthUI.IdpConfig.GoogleBuilder().build(),
                                 new AuthUI.IdpConfig.EmailBuilder().build(),

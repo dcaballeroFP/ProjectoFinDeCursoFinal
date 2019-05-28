@@ -1,6 +1,7 @@
 package com.example.projectofindecurso;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,9 +17,13 @@ import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 import com.example.projectofindecurso.GpsActivities.PointsMapsParkingActivity;
+import com.example.projectofindecurso.Login.LoginActivity;
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -95,6 +100,22 @@ public class PantallaPrincipal extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(PantallaPrincipal.this, PointsMapsAirportActivity.class);
                     startActivity(intent);
+                }
+            });
+
+            findViewById(R.id.cerrarSesion).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AuthUI.getInstance()
+                            .signOut(PantallaPrincipal.this)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    // user is now signed out
+                                    startActivity(new Intent(PantallaPrincipal.this, LoginActivity.class));
+                                    finish();
+                                }
+                            });
                 }
             });
         }
