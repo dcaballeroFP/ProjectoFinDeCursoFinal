@@ -15,7 +15,10 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.view.LayoutInflater;
 
+import com.example.projectofindecurso.CustomInfoWindowAdapter;
+import com.example.projectofindecurso.MainActivity;
 import com.example.projectofindecurso.PointsMapsDates;
 import com.example.projectofindecurso.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -97,6 +100,7 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
 //                        .anchor(0.0f,1.1f)
 //                        .position(latLng));
                 mDatabase.child("MarcadorParking").push().setValue(latLng);
+              //  mDatabase.child("MarcadorParking").push().setValue(nombre);
 
             }
         });
@@ -108,7 +112,7 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-
+                mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getApplicationContext())));
                 return false;
             }
         });
@@ -202,6 +206,9 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
             }
         });
     }
+
+
+
     private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
         Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
         vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());

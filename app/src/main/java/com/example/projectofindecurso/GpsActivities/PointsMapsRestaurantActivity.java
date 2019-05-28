@@ -98,10 +98,8 @@ public class PointsMapsRestaurantActivity extends FragmentActivity implements On
 //                        .position(latLng));
 
                 mDatabase.child("MarcadorRestaurante").push().setValue(latLng);
-
             }
         });
-
 
 
 
