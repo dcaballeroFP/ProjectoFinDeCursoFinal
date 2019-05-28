@@ -44,4 +44,14 @@
     <style name="sinfondo">
         <item name="android:background">@null</item>
     </style>
+
+    <style name="GreenTheme" parent="FirebaseUI" >
+        <!-- Required for sign-in flow styling -->
+        <item name="colorControlNormal">@color/material_green_500</item>
+        <item name="colorControlActivated">@color/material_lime_a700</item>
+        <item name="colorControlHighlight">@color/material_green_a200</item>
+        <item name="android:windowBackground">@drawable/fondoregistrousuario2</item>
+        <item name="android:windowActionBar">@null</item>
+
+    </style>
 </resources>

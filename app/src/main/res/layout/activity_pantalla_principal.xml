@@ -5,9 +5,9 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:padding="20dp"
     android:orientation="vertical"
-    android:background="@color/colorPrimaryDark">
+    android:background="@drawable/fondoasfalto">
 
 
     <Button
@@ -16,7 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:text="¿Dónde quieres aparcar?" />
+        android:text="¿Dónde quieres aparcar?"
+        android:background="@drawable/botton_redondo"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +28,8 @@
         <Button
             android:id="@+id/seleccionoFecha"
             style="@style/ColorBoton2"
-            android:layout_width="match_parent"
+            android:background="@drawable/bordes"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text=" Selecciona la fecha " />
@@ -34,9 +37,10 @@
         <ImageButton
             android:id="@+id/ib_obtener_fecha"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:src="@drawable/ic_calendario"
-            style="@style/ColorBoton1"
+            android:background="@drawable/bordes"
             />
 
     </LinearLayout>
@@ -44,57 +48,67 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="15dp">
+        android:padding="15dp"
+        android:layout_marginTop="20dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="180dp"
             android:orientation="horizontal"
-            android:paddingTop="20dp">
+            android:padding="10dp">
 
             <ImageButton
                 android:id="@+id/gpsPosicionImage"
-                style="@style/ColorBoton1"
-                android:layout_width="71dp"
-                android:layout_height="184dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/location_emoticono" />
+                android:src="@drawable/location_emoticono"
+                android:background="@drawable/bordes"
+                android:layout_marginRight="8dp"/>
 
             <ImageButton
                 android:id="@+id/gpsRestauranteImage"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:src="@drawable/restaurant_emoticono"
+                android:background="@drawable/botton_redondo"
+                android:layout_marginLeft="8dp"
                 />
 
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:orientation="horizontal">
+            android:layout_height="180dp"
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <ImageButton
                 android:id="@+id/gpsAeropuertoImage"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/airplane_emoticono" />
+                android:src="@drawable/airplane_emoticono"
+                android:background="@drawable/botton_redondo"
+                android:layout_marginRight="8dp"/>
 
             <ImageButton
                 android:id="@+id/gpsParkingImage"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/car_emoticono" />
+                android:src="@drawable/car_emoticono"
+                android:background="@drawable/bordes"
+                android:layout_marginLeft="8dp"/>
 
         </LinearLayout>
         <Button
             android:id="@+id/cerrarSesion"
-            style="@style/ColorBoton2"
+            style="@style/ColorBotonGoogle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cerrar Sesion" />
+            android:text="Cerrar Sesion"
+            />
     </LinearLayout>
 
 </LinearLayout>

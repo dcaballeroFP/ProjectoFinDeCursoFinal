@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                                 new AuthUI.IdpConfig.GoogleBuilder().build(),
                                 new AuthUI.IdpConfig.EmailBuilder().build(),
                                 new AuthUI.IdpConfig.PhoneBuilder().build()))
+                        .setTheme(R.style.GreenTheme)
                         .build(),
                 RC_SIGN_IN);
     }
