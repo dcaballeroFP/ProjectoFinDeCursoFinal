@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.projectofindecurso.Ayuda.ActivityAyuda;
-import com.example.projectofindecurso.GpsActivities.GpsPositionActivity;
-import com.example.projectofindecurso.MainActivity;
 import com.example.projectofindecurso.PantallaPrincipal;
 import com.example.projectofindecurso.R;
 import com.example.projectofindecurso.Registry.RegistroUsuarioNuevo;
