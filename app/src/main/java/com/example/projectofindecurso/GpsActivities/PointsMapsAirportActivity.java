@@ -9,14 +9,13 @@ import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 
-import com.example.projectofindecurso.PointsMapsDates;
+import com.example.projectofindecurso.Model.PointsMapsDates;
 import com.example.projectofindecurso.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.CameraUpdate;
@@ -36,8 +35,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class PointsMapsAirportActivity extends FragmentActivity implements OnMapReadyCallback {
     private FusedLocationProviderClient mFusedLocationClient;

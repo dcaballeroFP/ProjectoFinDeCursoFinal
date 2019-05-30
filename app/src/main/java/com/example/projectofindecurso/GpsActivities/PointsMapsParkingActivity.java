@@ -1,7 +1,9 @@
 package com.example.projectofindecurso.GpsActivities;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -9,17 +11,21 @@ import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.support.annotation.DrawableRes;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
 
-import com.example.projectofindecurso.CustomInfoWindowAdapter;
-import com.example.projectofindecurso.MainActivity;
-import com.example.projectofindecurso.PointsMapsDates;
+import com.example.projectofindecurso.Model.CustomInfoWindowAdapter;
+import com.example.projectofindecurso.Model.PointsMapsDates;
 import com.example.projectofindecurso.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.CameraUpdate;
@@ -37,10 +43,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
+import android.view.View;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class PointsMapsParkingActivity extends FragmentActivity implements OnMapReadyCallback {
     private FusedLocationProviderClient mFusedLocationClient;
@@ -49,12 +53,15 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
     private DatabaseReference mDatabase;
     PointsMapsDates mp;
     private Marker marcador;
-
     double latitud = 0.0;
     double longitud = 0.0;
-
     private ArrayList<Marker> tmpRealTimeMarker = new ArrayList<>();
     private ArrayList<Marker> realTimeMarkers = new ArrayList<>();
+    public EditText calle;
+    public EditText nombrePunto;
+
+    View view;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +71,8 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
     }
 
     @Override
@@ -75,31 +82,59 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
         miUbicacion();
         //Añadir marca con un longClick
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
-            public void onMapLongClick(LatLng latLng) {
+            public void onMapLongClick(final LatLng latLng) {
 //                mMap.addMarker(new MarkerOptions()
 //                        .anchor(0.0f,1.1f)
 //                        .position(latLng));
 
-                PointsMapsDates pointsMapsDates = new PointsMapsDates();
-                pointsMapsDates.setLongitude(latLng.longitude);
-                pointsMapsDates.setLatitude(latLng.latitude);
-                pointsMapsDates.setCalle("pepe");
-                mDatabase.child("MarcadorParking").push().setValue(pointsMapsDates);
+                  AlertDialog.Builder alert = new AlertDialog.Builder(PointsMapsParkingActivity.this);
+                    view=getLayoutInflater().inflate(R.layout.dialog_calle,null);
+                    calle = (EditText) view.findViewById(R.id.nombreCalle);
+                    nombrePunto = (EditText) view.findViewById(R.id.nombre);
+
+
+                alert.setView(view);
+                        alert.setTitle("Añadir Direccion");
+                        alert.setPositiveButton("Añadir", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                final PointsMapsDates pointsMapsDates = new PointsMapsDates();
+                                pointsMapsDates.setLongitude(latLng.longitude);
+                                pointsMapsDates.setLatitude(latLng.latitude);
+                                pointsMapsDates.setCalle(calle.getText().toString());
+                                pointsMapsDates.setNombre(nombrePunto.getText().toString());
+                                mDatabase.child("MarcadorParking").push().setValue(pointsMapsDates);
+
+                            }
+                        }
+                        );
+                        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        })
+                        .show();
 
             }
-        });
+        }
+        );
+
+
 
 
         //Clicar en una marca
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getApplicationContext())));
+                MarkerOptions markerOptions = new MarkerOptions();
+                PointsMapsDates pointsMapsDates = new PointsMapsDates();
+                mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(getApplicationContext()),marker.getTitle(),marker.getSnippet()));
                 return false;
             }
         });
-
 
     }
 
@@ -175,11 +210,12 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
                     Double latitud= pmd.getLatitude();
                     Double longitud= pmd.getLongitude();
                     String calle= pmd.getCalle();
+                    String nombre= pmd.getNombre();
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(new LatLng(latitud,longitud));
                     markerOptions.title(calle);
+                    markerOptions.snippet(nombre);
                     markerOptions.icon(bitmapDescriptorFromVector(getApplicationContext(),R.drawable.car_emoticono));
-
                     tmpRealTimeMarker.add(mMap.addMarker(markerOptions));
                 }
                 realTimeMarkers.clear();
@@ -203,6 +239,7 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
         vectorDrawable.draw(canvas);
         return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
+
 
 
 }

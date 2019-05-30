@@ -1,12 +1,14 @@
-package com.example.projectofindecurso;
+package com.example.projectofindecurso.Model;
 
 public class PointsMapsDates {
     private double latitude;
     private double longitude;
-
-
-
     public String calle;
+
+
+
+    public String nombre;
+
 
     public PointsMapsDates() {
     }
@@ -33,5 +35,11 @@ public class PointsMapsDates {
     public void setCalle(String calle) {
         this.calle = calle;
     }
+    public String getNombre() {
+        return nombre;
+    }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }

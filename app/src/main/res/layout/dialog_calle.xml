@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <EditText
+        android:id="@+id/nombre"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/cardview_light_background"
+        android:textColor="@color/places_text_black_alpha_87"
+        android:hint="Nombre"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/places_text_black_alpha_87" />
+
+    <EditText
+        android:id="@+id/nombreCalle"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@color/cardview_light_background"
+        android:textColor="@color/places_text_black_alpha_87"
+        android:hint="Nombre Calle"
+        android:inputType="textEmailAddress"
+        android:textColorHint="@color/places_text_black_alpha_87" />
+
+
+
+</LinearLayout>
