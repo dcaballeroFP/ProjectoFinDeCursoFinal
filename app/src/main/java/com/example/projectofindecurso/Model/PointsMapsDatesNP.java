@@ -1,17 +1,13 @@
 package com.example.projectofindecurso.Model;
 
-public class PointsMapsDates {
+public class PointsMapsDatesNP {
     private double latitude;
     private double longitude;
     private String calle;
-    private boolean privado;
-
-
-
     public String nombre;
 
 
-    public PointsMapsDates() {
+    public PointsMapsDatesNP() {
     }
 
     public double getLatitude() {
@@ -44,11 +40,5 @@ public class PointsMapsDates {
         this.nombre = nombre;
     }
 
-    public boolean isPrivado() {
-        return privado;
-    }
-
-    public void setPrivado(boolean privado) {
-        this.privado = privado;
-    }
 }
+

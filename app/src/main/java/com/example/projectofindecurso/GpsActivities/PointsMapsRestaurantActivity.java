@@ -1,7 +1,9 @@
 package com.example.projectofindecurso.GpsActivities;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -9,13 +11,21 @@ import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 
+import com.example.projectofindecurso.Model.CustomInfoWindowAdapterRT;
 import com.example.projectofindecurso.Model.PointsMapsDates;
+import com.example.projectofindecurso.Model.PointsMapsDatesNP;
 import com.example.projectofindecurso.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.CameraUpdate;
@@ -43,12 +53,17 @@ public class PointsMapsRestaurantActivity extends FragmentActivity implements On
     private DatabaseReference mDatabase;
     PointsMapsDates mp;
     private Marker marcador;
-
     double latitud = 0.0;
     double longitud = 0.0;
-
     private ArrayList<Marker> tmpRealTimeMarker = new ArrayList<>();
     private ArrayList<Marker> realTimeMarkers = new ArrayList<>();
+    public EditText calle;
+    public EditText nombrePunto;
+
+
+
+    View view;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,28 +73,9 @@ public class PointsMapsRestaurantActivity extends FragmentActivity implements On
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-
-
-
     }
-
-
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-
-
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -88,15 +84,37 @@ public class PointsMapsRestaurantActivity extends FragmentActivity implements On
         miUbicacion();
         //Añadir marca con un longClick
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
-            @Override
-            public void onMapLongClick(LatLng latLng) {
+                                           @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                                           @Override
+                                           public void onMapLongClick(final LatLng latLng) {
 //                mMap.addMarker(new MarkerOptions()
 //                        .anchor(0.0f,1.1f)
 //                        .position(latLng));
+        AlertDialog.Builder alert = new AlertDialog.Builder(PointsMapsRestaurantActivity.this);
+        view=getLayoutInflater().inflate(R.layout.dialog_callenp,null);
+        calle = (EditText) view.findViewById(R.id.nombreCalle);
+        nombrePunto = (EditText) view.findViewById(R.id.nombre);
+        alert.setView(view);
+        alert.setTitle("Añadir Direccion");
+        alert.setPositiveButton("Añadir", new DialogInterface.OnClickListener() {
 
-                mDatabase.child("MarcadorRestaurante").push().setValue(latLng);
-            }
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+        final PointsMapsDatesNP pointsMapsDatesNP = new PointsMapsDatesNP();
+        pointsMapsDatesNP.setLongitude(latLng.longitude);
+        pointsMapsDatesNP.setLatitude(latLng.latitude);
+        pointsMapsDatesNP.setCalle(calle.getText().toString());
+        pointsMapsDatesNP.setNombre(nombrePunto.getText().toString());
+        mDatabase.child("MarcadorRestaurante").push().setValue(pointsMapsDatesNP);
+        }
         });
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) { dialog.cancel();
+        }}).show();}
+                                       }
+        );
+
 
 
 
@@ -104,15 +122,15 @@ public class PointsMapsRestaurantActivity extends FragmentActivity implements On
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-
+                MarkerOptions markerOptions = new MarkerOptions();
+                PointsMapsDates pointsMapsDates = new PointsMapsDates();
+                mMap.setInfoWindowAdapter(new CustomInfoWindowAdapterRT(LayoutInflater.from(getApplicationContext()),marker.getTitle(),marker.getSnippet()));
                 return false;
             }
         });
 
-
     }
 
-    ///////Posición Gps
     private void agregarMarcador(double latitud, double longitud) {
         LatLng coordenadas = new LatLng(latitud, longitud);
         CameraUpdate miUbicacion = CameraUpdateFactory.newLatLngZoom(coordenadas, 16);
@@ -157,6 +175,9 @@ public class PointsMapsRestaurantActivity extends FragmentActivity implements On
         }
     };
 
+
+
+
     private void miUbicacion() {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -166,9 +187,8 @@ public class PointsMapsRestaurantActivity extends FragmentActivity implements On
         Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         actualizarUbicacion(location);
     }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
     private void cargarMapas(){
         mDatabase.child("MarcadorRestaurante").addValueEventListener(new ValueEventListener() {
@@ -179,11 +199,16 @@ public class PointsMapsRestaurantActivity extends FragmentActivity implements On
                     marker.remove();
                 }
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    PointsMapsDates pmd=snapshot.getValue(PointsMapsDates.class);
-                    Double latitud= pmd.getLatitude();
-                    Double longitud= pmd.getLongitude();
+                    PointsMapsDatesNP pointsMapsDatesNP=snapshot.getValue(PointsMapsDatesNP.class);
+                    Double latitud= pointsMapsDatesNP.getLatitude();
+                    Double longitud= pointsMapsDatesNP.getLongitude();
+                    String calle= pointsMapsDatesNP.getCalle();
+                    String nombre= pointsMapsDatesNP.getNombre();
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(new LatLng(latitud,longitud));
+                    markerOptions.title(calle);
+                    markerOptions.snippet(nombre);
+
                     markerOptions.icon(bitmapDescriptorFromVector(getApplicationContext(),R.drawable.restaurant_emoticono));
                     tmpRealTimeMarker.add(mMap.addMarker(markerOptions));
                 }
@@ -198,6 +223,8 @@ public class PointsMapsRestaurantActivity extends FragmentActivity implements On
         });
     }
 
+
+
     private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
         Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
         vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
@@ -206,6 +233,7 @@ public class PointsMapsRestaurantActivity extends FragmentActivity implements On
         vectorDrawable.draw(canvas);
         return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
+
 
 
 }

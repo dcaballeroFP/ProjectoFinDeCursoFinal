@@ -18,10 +18,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.example.projectofindecurso.Model.CustomInfoWindowAdapter;
@@ -43,7 +42,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import android.view.View;
+
 import java.util.ArrayList;
 
 public class PointsMapsParkingActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -59,6 +58,8 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
     private ArrayList<Marker> realTimeMarkers = new ArrayList<>();
     public EditText calle;
     public EditText nombrePunto;
+    public CheckBox parkingprivado;
+
 
     View view;
 
@@ -93,6 +94,7 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
                     view=getLayoutInflater().inflate(R.layout.dialog_calle,null);
                     calle = (EditText) view.findViewById(R.id.nombreCalle);
                     nombrePunto = (EditText) view.findViewById(R.id.nombre);
+                    parkingprivado= (CheckBox) view.findViewById(R.id.privado);
 
 
                 alert.setView(view);
@@ -105,6 +107,11 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
                                 pointsMapsDates.setLatitude(latLng.latitude);
                                 pointsMapsDates.setCalle(calle.getText().toString());
                                 pointsMapsDates.setNombre(nombrePunto.getText().toString());
+                                if(parkingprivado.isChecked()){
+                                    pointsMapsDates.setPrivado(true);
+                                }else {
+                                    pointsMapsDates.setPrivado(false);
+                                }
                                 mDatabase.child("MarcadorParking").push().setValue(pointsMapsDates);
 
                             }
@@ -211,11 +218,18 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
                     Double longitud= pmd.getLongitude();
                     String calle= pmd.getCalle();
                     String nombre= pmd.getNombre();
+                    Boolean privado= pmd.isPrivado();
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(new LatLng(latitud,longitud));
                     markerOptions.title(calle);
                     markerOptions.snippet(nombre);
-                    markerOptions.icon(bitmapDescriptorFromVector(getApplicationContext(),R.drawable.car_emoticono));
+                    markerOptions.draggable(privado);
+
+                    if(!privado){
+                        markerOptions.icon(bitmapDescriptorFromVector(getApplicationContext(),R.drawable.car_emoticono));
+                    }else {
+                        markerOptions.icon(bitmapDescriptorFromVector(getApplicationContext(),R.drawable.car_emoticonoprivado));
+                    }
                     tmpRealTimeMarker.add(mMap.addMarker(markerOptions));
                 }
                 realTimeMarkers.clear();
