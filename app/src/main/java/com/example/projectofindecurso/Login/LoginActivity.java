@@ -53,14 +53,13 @@ public class LoginActivity extends AppCompatActivity {
 
         startActivityForResult(
                 AuthUI.getInstance()
-
                         .createSignInIntentBuilder()
-                        .setIsSmartLockEnabled(false)
                         .setAvailableProviders(Arrays.asList(
                                 new AuthUI.IdpConfig.GoogleBuilder().build(),
                                 new AuthUI.IdpConfig.EmailBuilder().build(),
                                 new AuthUI.IdpConfig.PhoneBuilder().build()))
                         .setTheme(R.style.GreenTheme)
+                        .setLogo(R.drawable.icon)
                         .build(),
                 RC_SIGN_IN);
     }
