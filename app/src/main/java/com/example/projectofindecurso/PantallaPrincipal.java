@@ -18,6 +18,7 @@ import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 import com.example.projectofindecurso.Login.LoginActivity;
+import com.example.projectofindecurso.Registry.RegistroVehiculo;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -44,6 +45,18 @@ public class PantallaPrincipal extends AppCompatActivity {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         subirLatLongFirebase();
+
+        findViewById(R.id.vehiculo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PantallaPrincipal.this, RegistroVehiculo.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
     }
     private void subirLatLongFirebase () {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)

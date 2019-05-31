@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -36,6 +37,8 @@ public class RegistroVehiculo extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
+    Vehiculo plazaSeleccionada;
+
     private List<Vehiculo> listVehiculo = new ArrayList<Vehiculo>();
     ArrayAdapter<Vehiculo> arrayAdapterVehiculo;
     @Override
@@ -54,6 +57,16 @@ public class RegistroVehiculo extends AppCompatActivity {
         iniciarFirebase();
 
         listarDatos();
+        listV_vehiculo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                plazaSeleccionada = (Vehiculo) parent.getItemAtPosition(position);
+                callePlaza.setText(plazaSeleccionada.getCalle());
+                CPplaza.setText(plazaSeleccionada.getCP());
+                precioPlaza.setText(plazaSeleccionada.getPrecio());
+                telfC.setText(plazaSeleccionada.getTelfContacto());
+            }
+        });
 
 
         findViewById(R.id.añadirUbicacion).setOnClickListener(new View.OnClickListener() {
@@ -123,10 +136,31 @@ public class RegistroVehiculo extends AppCompatActivity {
                 }
 
                 Toast.makeText(this, "Plaza Disponible", Toast.LENGTH_LONG).show();
+                limpiarCajas();
                 break;
             }
             case R.id.icon_borrar:{
+                Vehiculo v = new Vehiculo();
+                v.setUid(plazaSeleccionada.getUid());
+                databaseReference.child("PlazaParking").child(v.getUid()).removeValue();
+
+
                 Toast.makeText(this, "Plaza Eliminada", Toast.LENGTH_LONG).show();
+                limpiarCajas();
+                break;
+
+
+            }case R.id.ic_guardar:{
+                Vehiculo v = new Vehiculo();
+                v.setUid(plazaSeleccionada.getUid());
+                v.setCalle(callePlaza.getText().toString().trim());
+                v.setCP(CPplaza.getText().toString().trim());
+                v.setTelfContacto(telfC.getText().toString().trim());
+                v.setPrecio(precioPlaza.getText().toString().trim());
+
+                databaseReference.child("PlazaParking").child(v.getUid()).setValue(v);
+                Toast.makeText(this, "Registro Actualizado", Toast.LENGTH_LONG).show();
+                limpiarCajas();
                 break;
             }
             default:break;
@@ -151,5 +185,12 @@ public class RegistroVehiculo extends AppCompatActivity {
             precioPlaza.setError("Required");
         }
 
+    }
+
+    private void limpiarCajas() {
+        callePlaza.setText("");
+        precioPlaza.setText("");
+        telfC.setText("");
+        CPplaza.setText("");
     }
 }

@@ -7,8 +7,14 @@
     android:title="Edit Done"
     ap:showAsAction="always" />
 
+    <item android:id="@+id/ic_guardar"
+        android:icon="@drawable/ic_guardar"
+        android:title="Edit Done"
+        ap:showAsAction="always" />
+
     <item android:id="@+id/icon_borrar"
         android:icon="@drawable/ic_borrar"
         android:title="Edit Done"
-        ap:showAsAction="always" />
+        ap:showAsAction="always"
+        />
 </menu>

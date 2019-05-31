@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_nuevo);
+        getSupportActionBar().hide();
         findViewById(R.id.helpbutton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
