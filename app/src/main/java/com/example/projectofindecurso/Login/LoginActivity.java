@@ -38,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
        // comeIn();
     }
 
+
+
     void comeIn(){
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
@@ -73,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public void ejecutar_ayuda(View v){
+    public void ejecutar_ajuda(View v){
         Intent i = new Intent(this, ActivityAyuda.class);
         startActivity(i);
     }

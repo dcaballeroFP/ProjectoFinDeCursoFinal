@@ -1,49 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="20dp"
     android:background="@drawable/fondoasfalto">
 
     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="243dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
+        android:text="AYUDA SEARCHK"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="157dp"
+        android:layout_height="291dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/pantalla_principal_nueva" />
+
+    <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Acabas de acceder al apartado de ayuda. Cuyo funcionamiento se componer de 5 funcionalidades básicas, en primer lugar ha de saber que para que funcione correctamente la aplicacion debe de acceder primer al boton de localizacion para indicar a la aplicacion cual es su localizacion exacta, y despues podra disfrutar de la demas funcionalidades que comentaremos a continuación, para acceder debera de pulsar en cualquier de los botones de la parte inferior de la pantalla."
-        android:textSize="14sp"
-        android:padding="10dp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#ffffff"/>
+        android:layout_width="176dp"
+        android:layout_height="420dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="Acabas de acceder al apartado de ayuda de la fantastica aplicacion searchk, cuyo funcionamiento se componer de 5 funcionalidades básicas, en primer lugar ha de saber que para que funcione correctamente la aplicacion debe de acceder primer al boton de localizacion para indicar a la aplicacion cual es su localizacion exacta, y despues podra disfrutar de la demas funcionalidades que comentaremos a continuación, para acceder debera de pulsar en cualquier de los botones de la parte inferior de la pantalla."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="10dp"
-        android:orientation="vertical"
-        >
+    <Button
+        android:id="@+id/button_ayuda_restaurante"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="380dp"
+        android:onClick="ejecutar_ayuda_restaurante"
+        android:text="FUNCION RESTAURANTE"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-        <ImageSwitcher
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </ImageSwitcher>
-
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_next"
-            android:layout_gravity="end"
-            />
-
-
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/button_ayuda_aeropuerto"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="380dp"
+        android:layout_marginEnd="40dp"
+        android:onClick="ejecutar_ayuda_aeropuerto"
+        android:text="FUNCION AEROPUERTO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 
+    <Button
+        android:id="@+id/button_ayuda_registro"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="448dp"
+        android:onClick="ejecutar_ayuda_registro"
+        android:text="FUNCION NUEVO REGISTRO"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/button_ayuda_localizacion"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="448dp"
+        android:layout_marginEnd="40dp"
+        android:onClick="ejecutar_ayuda_localizacion"
+        android:text="FUNCION LOCALIZACION"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/button_ayuda_aparcamiento"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="528dp"
+        android:layout_marginEnd="8dp"
+        android:onClick="ejecutar_ayuda_aparcamiento"
+        android:text=" APARCAMIENTO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+</android.support.constraint.ConstraintLayout>

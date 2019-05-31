@@ -15,8 +15,31 @@ public class ActivityAyuda extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ayuda);
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
+    }
+    public void ejecutar_ayuda_aeropuerto(View v){
+        Intent i = new Intent(this, ActivityAyudaAeropuerto.class);
+        startActivity(i);
+    }
 
+    public void ejecutar_ayuda_aparcamiento(View v){
+        Intent i = new Intent(this, ActivityAyudaAparcamiento.class);
+        startActivity(i);
+    }
+
+    public void ejecutar_ayuda_localizacion(View v){
+        Intent i = new Intent(this, ActivityAyudaLocalizacion.class);
+        startActivity(i);
+    }
+
+    public void ejecutar_ayuda_registro(View v){
+        Intent i = new Intent(this, ActivityAyudaRegistro.class);
+        startActivity(i);
+    }
+
+    public void ejecutar_ayuda_restaurante(View v){
+        Intent i = new Intent(this, ActivityAyudaRestaurante.class);
+        startActivity(i);
     }
 
 
