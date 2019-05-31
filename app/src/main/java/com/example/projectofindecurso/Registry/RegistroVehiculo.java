@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.example.projectofindecurso.GpsActivities.PointsMapsParkingActivity;
 import com.example.projectofindecurso.Model.Vehiculo;
-import com.example.projectofindecurso.PantallaPrincipal;
 import com.example.projectofindecurso.R;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;

@@ -83,6 +83,7 @@ public class PointsMapsRestaurantActivity extends FragmentActivity implements On
         cargarMapas();
         miUbicacion();
         //Añadir marca con un longClick
+
         mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
                                            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                                            @Override

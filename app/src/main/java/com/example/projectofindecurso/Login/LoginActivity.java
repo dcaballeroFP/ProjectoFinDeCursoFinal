@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.projectofindecurso.Ayuda.ActivityAyuda;
-import com.example.projectofindecurso.PantallaPrincipal;
+import com.example.projectofindecurso.LandActivity;
 import com.example.projectofindecurso.R;
-import com.example.projectofindecurso.Registry.RegistroUsuarioNuevo;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_nuevo);
         getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         findViewById(R.id.helpbutton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     void comeIn(){
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
-            startActivity(new Intent(this, PantallaPrincipal.class));
+            startActivity(new Intent(this, LandActivity.class));
             finish();
         }
     }

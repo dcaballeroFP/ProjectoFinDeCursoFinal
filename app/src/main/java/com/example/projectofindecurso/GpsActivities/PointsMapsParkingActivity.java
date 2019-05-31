@@ -37,6 +37,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -82,7 +84,11 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
         cargarMapas();
         miUbicacion();
         //Añadir marca con un longClick
-        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+
+            mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onMapLongClick(final LatLng latLng) {
@@ -90,44 +96,39 @@ public class PointsMapsParkingActivity extends FragmentActivity implements OnMap
 //                        .anchor(0.0f,1.1f)
 //                        .position(latLng));
 
-                  AlertDialog.Builder alert = new AlertDialog.Builder(PointsMapsParkingActivity.this);
-                    view=getLayoutInflater().inflate(R.layout.dialog_calle,null);
-                    calle = (EditText) view.findViewById(R.id.nombreCalle);
-                    nombrePunto = (EditText) view.findViewById(R.id.nombre);
-                    parkingprivado= (CheckBox) view.findViewById(R.id.privado);
-
-
-                alert.setView(view);
-                        alert.setTitle("Añadir Direccion");
-                        alert.setPositiveButton("Añadir", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                final PointsMapsDates pointsMapsDates = new PointsMapsDates();
-                                pointsMapsDates.setLongitude(latLng.longitude);
-                                pointsMapsDates.setLatitude(latLng.latitude);
-                                pointsMapsDates.setCalle(calle.getText().toString());
-                                pointsMapsDates.setNombre(nombrePunto.getText().toString());
-                                if(parkingprivado.isChecked()){
-                                    pointsMapsDates.setPrivado(true);
-                                }else {
-                                    pointsMapsDates.setPrivado(false);
-                                }
-                                mDatabase.child("MarcadorParking").push().setValue(pointsMapsDates);
-
-                            }
-                        }
-                        );
-                        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        })
-                        .show();
-
+            AlertDialog.Builder alert = new AlertDialog.Builder(PointsMapsParkingActivity.this);
+            view = getLayoutInflater().inflate(R.layout.dialog_calle, null);
+            calle = (EditText) view.findViewById(R.id.nombreCalle);
+            nombrePunto = (EditText) view.findViewById(R.id.nombre);
+            parkingprivado = (CheckBox) view.findViewById(R.id.privado);
+            alert.setView(view);
+            alert.setTitle("Añadir Direccion");
+            alert.setPositiveButton("Añadir", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                final PointsMapsDates pointsMapsDates = new PointsMapsDates();
+                 pointsMapsDates.setLongitude(latLng.longitude);
+                 pointsMapsDates.setLatitude(latLng.latitude);
+                 pointsMapsDates.setCalle(calle.getText().toString());
+                 pointsMapsDates.setNombre(nombrePunto.getText().toString());
+                 if (parkingprivado.isChecked()) {
+                     pointsMapsDates.setPrivado(true);
+                 } else {
+                     pointsMapsDates.setPrivado(false);
+                 }
+                 mDatabase.child("MarcadorParking").push().setValue(pointsMapsDates);
             }
-        }
-        );
+            });
+            alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            })
+                    .show();
+                    }
+            }
+            );
 
 
 

@@ -8,10 +8,6 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
             android:title="@string/menu_home" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Mis PLazas" />
 
         <item
             android:id="@+id/nav_tools"
@@ -19,7 +15,7 @@
             android:title="Help" />
     </group>
 
-    <item android:title="">
+    <item android:title="Account">
         <menu>
             <item
                 android:id="@+id/sign_out"
@@ -28,5 +24,4 @@
 
         </menu>
     </item>
-
 </menu>
