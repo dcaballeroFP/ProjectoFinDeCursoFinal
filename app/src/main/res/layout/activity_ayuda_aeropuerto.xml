@@ -1,52 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/fondoasfalto">
-
-
+    android:background="@drawable/fondoasfalto"
+    android:orientation="vertical"
+    android:padding="20dp">
     <TextView
-        android:id="@+id/ayuda_aeropuerto"
-        android:layout_width="330dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="8dp"
-        android:text="FUNCION AEROPUERTO"
-        android:textColor="@color/colorPrimary"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="En este apartado podemos añadir nuestras plazas que queremos poder al mercado o bien alquilar.."
+        android:textSize="14sp"
+        android:padding="20dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#ffffff"
+        android:layout_marginTop="10dp"/>
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="184dp"
-        android:layout_height="170dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ayuda_aeropuerto"
-        app:srcCompat="@drawable/icono_aeropuerto" />
+    <RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="307dp"
-        android:layout_height="253dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="288dp"
-        android:layout_marginEnd="8dp"
-        android:text="Este es el apartado de ayuda de la funcionalidad llamada aeropuerto, que dada una localizacion introducida por nosotros nos mostrar los aeropuertos que se encuentren alrededor de la localizacion marcada por nosotros, y de los cuales podremos consultar informacion de una lista de restaurantes mostrados por pantalla."
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ayuda_aeropuerto" />
+        <ImageButton
+            android:id="@+id/button_before"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_next"
+            android:rotation="180" />
+
+        <ImageButton
+            android:id="@+id/button_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/button_before"
+            android:layout_gravity="end"
+            android:layout_marginEnd="-259dp"
+            android:background="@drawable/ic_next" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="30dp"
+        android:orientation="horizontal"
+        android:background="@drawable/logocoche"
+        android:layout_gravity="center"
+
+        >
 
 
-</android.support.constraint.ConstraintLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/menuizquierda"
+            android:layout_weight="1"
+            android:layout_marginRight="8dp"/>
+
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/registrarplaza"
+            android:layout_marginLeft="8dp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

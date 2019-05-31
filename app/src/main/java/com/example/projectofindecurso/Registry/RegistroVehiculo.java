@@ -44,7 +44,7 @@ public class RegistroVehiculo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_vehiculo);
-
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         callePlaza =  findViewById(R.id.ModeloVehiculo);
         CPplaza = findViewById(R.id.MarcaVehiculo);
         telfC = findViewById(R.id.TelfContacto);
@@ -68,13 +68,7 @@ public class RegistroVehiculo extends AppCompatActivity {
         });
 
 
-        findViewById(R.id.añadirUbicacion).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegistroVehiculo.this, PointsMapsParkingActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     private void listarDatos() {

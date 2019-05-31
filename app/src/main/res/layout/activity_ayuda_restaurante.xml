@@ -1,55 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/fondoasfalto">
-
-
+    android:background="@drawable/fondoasfalto"
+    android:orientation="vertical">
     <TextView
-        android:id="@+id/ayuda_restaurante"
-        android:layout_width="318dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="8dp"
-        android:text="AYUDA RESTAURANTE"
-        android:textColor="@color/colorPrimary"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="En ese apartados disponemos de nuestra ubicación
+  a tiempo real, por lo que podremos ubicarnos rapidamente.Nos indican los parkings cercanos a los restaurantes marcados"
+        android:textSize="14sp"
+        android:padding="20dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#ffffff"
+        android:layout_marginTop="10dp"/>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="8dp"
-        app:srcCompat="@drawable/icono_restaurante"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ayuda_restaurante"
-         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        android:paddingBottom="30dp"
+        android:orientation="vertical"
+        android:background="@drawable/logocoche"
+        android:layout_gravity="center"
+        >
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="336dp"
-        android:layout_height="268dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="@color/colorPrimary"
-        android:text="Este es el apartado de ayuda de la funcionalidad llamada restaurante, que dada una localizacion introducida por nosotros nos mostrará restaurantes que se encuentrar alrededor de la localizacion marcada, y de los cuales podremos consultar informacion de una lista de restaurantes mostrados por pantalla."
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.35" />
 
-</android.support.constraint.ConstraintLayout>
+        <RelativeLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/button_before"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_next"
+                android:rotation="180" />
+
+            <ImageButton
+                android:id="@+id/button_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/button_before"
+                android:layout_gravity="end"
+                android:layout_marginEnd="-259dp"
+                android:background="@drawable/ic_next" />
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/maparestaurantes" />
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

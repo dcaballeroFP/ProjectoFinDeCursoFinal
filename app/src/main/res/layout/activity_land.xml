@@ -15,13 +15,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/fondoasfalto">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botton_redondo"
+            android:text="¿Donde quieres aparcar?"
+            android:layout_marginBottom="20dp"
+            android:padding="10dp"
+            android:layout_marginTop="70dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="20dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="50dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="180dp"
@@ -32,19 +41,19 @@
                 android:id="@+id/gpsPosicionImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginRight="16dp"
                 android:layout_weight="1"
-                android:src="@drawable/location_emoticono"
                 android:background="@drawable/bordes"
-                android:layout_marginRight="8dp"/>
+                android:src="@drawable/location_emoticono" />
 
             <ImageButton
                 android:id="@+id/gpsRestauranteImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/restaurant_emoticono"
+                android:src="@drawable/restaurant_emoticonomap"
                 android:background="@drawable/botton_redondo"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="16dp"
                 />
 
         </LinearLayout>
@@ -61,34 +70,20 @@
                 android:layout_weight="1"
                 android:src="@drawable/airplane_emoticono"
                 android:background="@drawable/botton_redondo"
-                android:layout_marginRight="8dp"/>
+                android:layout_marginRight="16dp"/>
 
             <ImageButton
                 android:id="@+id/gpsParkingImage"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/car_emoticono"
+                android:src="@drawable/car_emoticonoblack"
                 android:background="@drawable/bordes"
-                android:layout_marginLeft="8dp"/>
+                android:layout_marginLeft="16dp"/>
 
         </LinearLayout>
-        <Button
-            android:id="@+id/cerrarSesion"
-            style="@style/ColorBotonGoogle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Cerrar Sesion"
-            />
-        <Button
-            android:id="@+id/vehiculo"
-            style="@style/ColorBotonGoogle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="VEHICULO"
-            />
+
+
     </LinearLayout>
 
 

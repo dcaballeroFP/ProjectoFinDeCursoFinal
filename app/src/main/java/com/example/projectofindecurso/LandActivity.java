@@ -4,8 +4,10 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -20,7 +22,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.projectofindecurso.Ayuda.ActivityAyuda;
 import com.example.projectofindecurso.GpsActivities.GpsPositionActivity;
 import com.example.projectofindecurso.GpsActivities.PointsMapsAirportActivity;
 import com.example.projectofindecurso.GpsActivities.PointsMapsParkingActivity;
@@ -32,18 +38,24 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LandActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class LandActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private int MY_PERMISSIONS_REQUEST_READ_CONTACTS;
     private FusedLocationProviderClient mFusedLocationClient;
     DatabaseReference mDatabase;
     String pepe = "Hola";
+    private ImageView imagenUser;
+    private TextView textView;
 
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +63,7 @@ public class LandActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -60,13 +73,17 @@ public class LandActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        findViewById(R.id.vehiculo).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LandActivity.this, RegistroVehiculo.class);
-                startActivity(intent);
-            }
-        });
+        View header= navigationView.getHeaderView(0);
+
+        textView= (TextView) header.findViewById(R.id.correoUser);
+        textView.setText(firebaseUser.getEmail());
+        imagenUser = (ImageView) header.findViewById(R.id.imageViewUsuario);
+        Glide.with(this)
+                .load(firebaseUser.getPhotoUrl())
+                .into(imagenUser);
+
+
+
         findViewById(R.id.gpsPosicionImage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,21 +116,6 @@ public class LandActivity extends AppCompatActivity
             }
         });
 
-        findViewById(R.id.cerrarSesion).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                AuthUI.getInstance()
-                        .signOut(LandActivity.this)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            public void onComplete(@NonNull Task<Void> task) {
-                                // user is now signed out
-                                startActivity(new Intent(LandActivity.this, LoginActivity.class));
-                                finish();
-                            }
-                        });
-            }
-        });
     }
 
     private void subirLatLongFirebase () {
@@ -179,6 +181,8 @@ public class LandActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         }  else if (id == R.id.nav_tools) {
+            Intent intent = new Intent(LandActivity.this, ActivityAyuda.class);
+            startActivity(intent);
 
         } else if (id ==R.id.sign_out){
             AuthUI.getInstance()
@@ -190,6 +194,9 @@ public class LandActivity extends AppCompatActivity
                             finish();
                         }
                     });
+        } else if(id == R.id.nav_alquilar_plaza){
+            Intent intent = new Intent(LandActivity.this, RegistroVehiculo.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

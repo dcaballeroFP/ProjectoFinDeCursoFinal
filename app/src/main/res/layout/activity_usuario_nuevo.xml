@@ -7,15 +7,16 @@
     android:orientation="vertical"
     android:background="@drawable/fondogradient2"
     android:padding="20dp">
+
         <ImageView
             android:id="@+id/helpbutton"
-            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="ejecutar_ajuda"
-            android:background="@drawable/ic_informacion"
             android:layout_gravity="right"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ic_informacion"
+            android:onClick="ejecutar_ajuda" />
 
         <LinearLayout
             android:layout_marginTop="70dp"
