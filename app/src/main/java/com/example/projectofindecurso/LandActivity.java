@@ -21,6 +21,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
+import com.example.projectofindecurso.Ayuda.ActivityAyuda;
 import com.example.projectofindecurso.GpsActivities.GpsPositionActivity;
 import com.example.projectofindecurso.GpsActivities.PointsMapsAirportActivity;
 import com.example.projectofindecurso.GpsActivities.PointsMapsParkingActivity;
@@ -60,13 +61,7 @@ public class LandActivity extends AppCompatActivity
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
 
-        findViewById(R.id.vehiculo).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LandActivity.this, RegistroVehiculo.class);
-                startActivity(intent);
-            }
-        });
+
         findViewById(R.id.gpsPosicionImage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,21 +94,7 @@ public class LandActivity extends AppCompatActivity
             }
         });
 
-        findViewById(R.id.cerrarSesion).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                AuthUI.getInstance()
-                        .signOut(LandActivity.this)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            public void onComplete(@NonNull Task<Void> task) {
-                                // user is now signed out
-                                startActivity(new Intent(LandActivity.this, LoginActivity.class));
-                                finish();
-                            }
-                        });
-            }
-        });
     }
 
     private void subirLatLongFirebase () {
@@ -178,7 +159,12 @@ public class LandActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             // Handle the camera action
-        }  else if (id == R.id.nav_tools) {
+            startActivity(new Intent(LandActivity.this, LoginActivity.class));
+        } else if (id == R.id.nav_alquilar_plaza) {
+            startActivity(new Intent(LandActivity.this, RegistroVehiculo.class));
+
+        } else if (id == R.id.nav_tools) {
+            startActivity(new Intent(LandActivity.this, ActivityAyuda.class));
 
         } else if (id ==R.id.sign_out){
             AuthUI.getInstance()
