@@ -14,10 +14,19 @@ public class ActivityAyudaLocalizacion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ayuda_localizacion);
         getSupportActionBar().hide();
+
         findViewById(R.id.button_next).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityAyudaLocalizacion.this, ActivityAyudaRestaurante.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.button_before).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityAyudaLocalizacion.this, ActivityAyudaAparcamiento.class);
                 startActivity(intent);
             }
         });

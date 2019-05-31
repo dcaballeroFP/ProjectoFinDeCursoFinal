@@ -68,13 +68,7 @@ public class RegistroVehiculo extends AppCompatActivity {
         });
 
 
-        findViewById(R.id.añadirUbicacion).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegistroVehiculo.this, PointsMapsParkingActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     private void listarDatos() {

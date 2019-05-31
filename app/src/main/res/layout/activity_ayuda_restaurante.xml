@@ -28,13 +28,26 @@
         >
 
 
-        <ImageButton
-            android:id="@+id/button_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_next"
-            android:layout_gravity="end"
-            />
+        <RelativeLayout
+            android:layout_width="350dp"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/button_before"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_next"
+                android:rotation="180" />
+
+            <ImageButton
+                android:id="@+id/button_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/button_before"
+                android:layout_gravity="end"
+                android:layout_marginEnd="-259dp"
+                android:background="@drawable/ic_next" />
+        </RelativeLayout>
 
 
         <ImageView

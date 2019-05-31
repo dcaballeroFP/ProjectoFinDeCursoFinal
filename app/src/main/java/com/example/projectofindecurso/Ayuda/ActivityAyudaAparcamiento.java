@@ -21,5 +21,12 @@ public class ActivityAyudaAparcamiento extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        findViewById(R.id.button_before).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityAyudaAparcamiento.this, ActivityAyudaRegistro.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -24,5 +24,13 @@ public class ActivityAyudaRegistro extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        findViewById(R.id.button_before).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityAyudaRegistro.this, ActivityAyuda.class);
+                startActivity(intent);
+            }
+        });
     }
 }

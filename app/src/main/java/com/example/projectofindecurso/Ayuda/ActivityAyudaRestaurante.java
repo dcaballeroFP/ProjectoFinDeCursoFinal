@@ -21,5 +21,13 @@ public class ActivityAyudaRestaurante extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        findViewById(R.id.button_before).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityAyudaRestaurante.this, ActivityAyudaLocalizacion.class);
+                startActivity(intent);
+            }
+        });
     }
 }

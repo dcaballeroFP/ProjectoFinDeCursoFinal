@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Registry.RegistroUsuarioNuevo"
     android:orientation="vertical"
     android:paddingLeft="12dp"
     android:paddingRight="12dp"
@@ -75,18 +74,6 @@
             android:textColorHint="@android:color/white" />
 
 
-
-        <Button
-            android:id="@+id/añadirUbicacion"
-            android:padding="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Añadir Ubicación"
-            android:background="@drawable/bordes"
-            android:drawableLeft="@drawable/ic_add_localicacion"
-            android:layout_gravity="center"/>
-
-
         <TextView
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
@@ -105,15 +92,12 @@
             <ListView
                 android:id="@+id/lv_datos_vehiculo"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/bordes">
-            </ListView>
+                android:layout_height="280dp"
+                android:background="@drawable/bordes"></ListView>
 
 
         </android.support.v7.widget.CardView>
 
-
-
-
+        
     </LinearLayout>
 </LinearLayout>
